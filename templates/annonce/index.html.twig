@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="ten columns">
+			<h2>Voici Les Annonces Proposées Par Les Professionnels :</h2>
+		</div>
+	</div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<!-- Recent Jobs -->
+	<div class="eleven columns">
+	<div class="padding-right">
+
+		<div class="listings-container">
+			{% for annonce in annonces %}
+			<!-- Listing -->
+			<a href="{{ path('annonce_show', { 'id': annonce.getId() } ) }}" class="listing full-time">
+				<div class="listing-logo">
+					<img src="images/job-list-logo-01.png" alt="">
+				</div>
+				<div class="listing-title">
+					<h4>{{ annonce.getNom() }}<span class="listing-type">{{ annonce.getIdContrat().getNom() }}</span></h4>
+					<ul class="listing-icons">
+						<li><i class="ln ln-icon-Management"></i>{{ annonce.getIdMetier().getNom() }}</li>
+						<li><i class="ln ln-icon-Map2"></i>{{ annonce.getIdVille().getNom() }}</li>
+						<li><i class="ln ln-icon-Money-2"></i>{{ annonce.getDatePublication()|date("m/d/Y") }}</li>
+					</ul>
+				</div>
+			</a>
+			{% endfor %}		
+
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="pagination-container">
+			<nav class="pagination">
+				<ul>
+					{% for i in 1..( (totalAnnonces / 4) | round(0,'ceil') ) %}
+					<li id="{{ i }}"><a href="{{ path("annonce", { page : i}) }}" class="current-page">{{ i }}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+
+			<!--<nav class="pagination-next-prev">
+				<ul>
+					<li><a href="" class="prev">Previous</a></li>
+					<li><a href="#" class="next">Next</a></li>
+				</ul>
+			</nav>-->
+		</div>
+
+	</div>
+	</div>
+
+
+  <!-- Widgets -->
+	<div class="five columns" style="opacity: 0.33;">
+
+		<!-- Trier par -->
+		<div class="widget">
+			<h4>Trier par</h4>
+
+			<!-- Select -->
+			<select id="select_tri" data-placeholder="Choisir" class="chosen-select-no-single" disabled>
+				<option id="recent" value="recent" selected="selected">Les Plus Récentes</option>
+				<option id="ancien" value="oldest">Les Plus Anciennes</option>
+			</select>
+
+		</div>
+
+		<!-- Ville -->
+		<div class="widget">
+			<h4>Ville</h4>
+
+			<!-- Select -->
+			<select data-placeholder="Choisir" class="chosen-select-no-single" disabled>
+				{% for ville in villes %}
+				<option selected="selected" value="recent">{{ ville.getNom() }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<!-- Contrat -->
+		<div class="widget">
+			<h4>Contrat</h4>
+			
+			<!-- Select -->
+			<select data-placeholder="Choisir" class="chosen-select-no-single" disabled>
+				{% for contrat in contrats %}
+				<option selected="selected" value="recent">{{ contrat.getNom() }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="six columns">
+			<a class="button">Valider</a>
+		</div>
+
+	</div>
+	<!-- Widgets / End -->
+
+</div>
+{% endblock %}
+

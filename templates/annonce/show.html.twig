@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="ten columns">
+			<h3><strong>{{ annonce.getId() }}</strong></h3>
+			<br>
+			<h2><strong>{{ annonce.getNom() }}</strong></h2>
+			<br>
+			<div style="display: flex; flex-direction: column;">
+				<div style="display: flex; flex-direction: row;"><h3>Contrat :</h3><h2><span class="full-time"> {{ annonce.getIdContrat().getNom() }}</span></h2></div>
+				<div style="display: flex; flex-direction: row;"><h3>Proposée par : </h3><h2><span class="temporary"> {{ annonce.getIdPro().getPrenom() }} {{ annonce.getIdPro().getNom() }}</span></h2></div>
+				<div style="display: flex; flex-direction: row;"><h3>Gérée par : </h3><h2><span class="freelance"> {{ annonce.getIdEmp().getPrenom() }} {{ annonce.getIdEmp().getNom() }}</span></h2></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	
+	<!-- Recent Jobs -->
+	<div class="eleven columns">
+		<div class="padding-right">
+			<!-- Company Info -->
+			<div class="company-info">
+				<div class="content">
+					<h4>Deviens <strong>{{ annonce.getIdMetier().getNom() }}</strong>!</h4>
+					<br>
+					<h4>Poste proposé du <strong>{{ annonce.getDateDebut()|date("m/d/Y") }}</strong> au <strong>{{ annonce.getDateFin()|date("m/d/Y") }}</strong></h4>
+					<br>
+					<h4>Annonce publiée le <strong>{{ annonce.getDatePublication()|date("m/d/Y") }}</strong></h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<p class="margin-reset">
+			{{ annonce.getDescription() }}
+			</p>
+		</div>
+	</div>
+
+
+	<!-- Widgets -->
+	<div class="five columns">
+
+		<!-- Sort by -->
+		<div class="widget">
+
+			<div class="job-overview">
+
+				<!--<a href="#small-dialog" class="popup-with-zoom-anim button">Postuler !</a>-->
+				<a class="popup-with-zoom-anim button" style="opacity: 0.33;">Postuler !</a>
+
+				<div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
+					<div class="small-dialog-headline">
+						<h2>Postuler !</h2>
+					</div>
+
+					<div class="small-dialog-content">
+						<form action="#" method="get" >
+							<input type="text" placeholder="NOM Prénom" value=""/>
+							<input type="text" placeholder="Email" value=""/>
+							<textarea placeholder="Votre motivation"></textarea>
+
+							<button class="send">Envoyer</button>
+						</form>
+					</div>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Widgets / End -->
+
+
+</div>
+{% endblock %}
