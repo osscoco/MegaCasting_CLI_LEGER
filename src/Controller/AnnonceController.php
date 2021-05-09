@@ -21,7 +21,6 @@ class AnnonceController extends AbstractController
     {
         //Repository Annonce
         $repositoryAnnonce = $em->getRepository(Annonce::class);
-
         $annonces = $repositoryAnnonce->PaginatedAnnonce((int)$request->query->get("page", 1));
         $totalAnnonces = $repositoryAnnonce->countAnnonces();
 
@@ -37,7 +36,7 @@ class AnnonceController extends AbstractController
             'annonces' => $annonces,
             'totalAnnonces' => $totalAnnonces,
             'villes' => $villes,
-            'contrats' => $contrats
+            'contrats' => $contrats,
         ]);
     }
 

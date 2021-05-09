@@ -1,10 +1,12 @@
 security:
-    encoders:
-        App\Security\Professionnel:
-            algorithm: auto
+    #encoders:
+        #App\Entity\Professionnel:
+            #algorithm: auto
+
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
+        # used to reload user from session & other features (e.g. switch_user)
         users_in_memory: { memory: null }
 
         # used to reload user from session & other features (e.g. switch_user)
@@ -15,7 +17,14 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: users_in_memory
+            #provider: app_user_provider
+            #guard:
+                #authenticators:
+                    #- App\Security\ProfessionnelAuthenticator
+            #logout:
+                #path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

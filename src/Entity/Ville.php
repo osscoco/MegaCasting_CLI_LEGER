@@ -45,5 +45,4 @@ class Ville
         return $this;
     }
 
-
 }

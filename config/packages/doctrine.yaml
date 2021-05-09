@@ -1,10 +1,10 @@
 parameters:
     env(DATABASE_URL): ''
     database_driver: pdo_sqlsrv
-    database_host: localhost
+    database_host: 172.16.1.210
     database_port: null
     database_name: Megacasting
-    database_user: corentin
+    database_user: sa
     database_password: Not24get
 
 doctrine:

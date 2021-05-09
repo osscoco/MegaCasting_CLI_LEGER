@@ -4,7 +4,7 @@
 
 <!-- Banner
 ================================================== -->
-<div id="banner" class="with-transparent-header parallax background" style="background-image: url(images/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330" data-diff="300">
+<div id="banner" class="with-transparent-header parallax background" style="background-image: url(pictures/img/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330" data-diff="300">
 	<div class="container">
 		<div class="sixteen columns">		
 			<div class="search-container">
@@ -21,14 +21,14 @@
 
 <!-- Metiers -->
 <div class="container">
-	<div class="seventeen columns">
+	<div class="sixteen columns">
 		<h3 class="margin-bottom-20 margin-top-10">Tous les Métiers</h3>
 			<!-- Popular Categories -->
 			<div class="categories-boxes-container">.
 				{% for metier in metiers %}
 				<!-- Box -->
 				<a class="category-small-box" id="{{ metier.getNom() }}">
-					<i class="ln ln-icon-Bar-Chart"></i>
+					<i class="ln ln-icon-Worker"/></i>
 					<h4>{{ metier.getNom() }}</h4>
 				</a>
 				{% endfor %}
@@ -41,14 +41,14 @@
 
 <!-- Villes -->
 <div class="container">
-	<div class="seventeen columns">
+	<div class="sixteen columns">
 		<h3 class="margin-bottom-20 margin-top-10">Toutes les Villes</h3>
 			<!-- Popular Categories -->
 			<div class="categories-boxes-container">.
 				{% for ville in villes %}
 				<!-- Box -->
 				<a class="category-small-box">
-					<i class="ln ln-icon-Bar-Chart"></i>
+					<i class="ln ln-icon-Map2"></i>
 					<h4>{{ ville.getNom() }}</h4>
 				</a>
 				{% endfor %}
@@ -61,14 +61,14 @@
 
 <!-- Contrats -->
 <div class="container">
-	<div class="seventeen columns">
+	<div class="sixteen columns">
 		<h3 class="margin-bottom-20 margin-top-10">Tous les Contrats</h3>
 			<!-- Popular Categories -->
 			<div class="categories-boxes-container">.
 				{% for contrat in contrats %}
 				<!-- Box -->
 				<a class="category-small-box">
-					<i class="ln ln-icon-Bar-Chart"></i>
+					<i class="ln ln-icon-Management"></i>
 					<h4>{{ contrat.getNom() }}</h4>
 				</a>
 				{% endfor %}
@@ -82,7 +82,7 @@
 <div class="container">
 	
 	<!-- Recent Jobs -->
-	<div class="seventeen columns">
+	<div class="sixteen columns">
 	<div class="padding-right">
 		<h3 class="margin-bottom-25">Les 3 Dernières Annonces</h3>
 		<div class="listings-container">
@@ -91,12 +91,12 @@
 			<!-- Listing -->
 			<a href="{{ path('annonce_show', { 'id': annonce.getId() } ) }}" class="listing full-time">
 				<div class="listing-logo">
-					<img src="images/job-list-logo-01.png" alt="">
+					<img src="pictures/img/job-list-logo-01.png" alt="">
 				</div>
 				<div class="listing-title">
 					<h4>{{ annonce.getId() }} - {{ annonce.getNom() }} <span class="listing-type">{{ annonce.getIdContrat().getNom() }}</span></h4>
 					<ul class="listing-icons">
-						<li><i class="ln ln-icon-Management"></i>{{ annonce.getIdMetier().getNom() }}</li>
+						<li><i class="ln ln-icon-Worker"></i>{{ annonce.getIdMetier().getNom() }}</li>
 						<li><i class="ln ln-icon-Map2"></i>{{ annonce.getIdVille().getNom() }}</li>
 						<li><i class="ln ln-icon-Money-2"></i>{{ annonce.getDatePublication()|date("m/d/Y") }}</li>
 						<li><div class="listing-date new">Nouvelle</div></li>
@@ -105,7 +105,7 @@
 			</a>
 			{% endfor %}
 		</div>
-		<a href="/annonce?page=1" class="button centered"><i class="fa fa-plus-circle"></i>Voir Plus d'Annonces</a>
+		<a href="/annonce?page=1" class="button centered">Voir Plus d'Annonces</a>
 		<div class="margin-bottom-55"></div>
 	</div>
 	</div>
